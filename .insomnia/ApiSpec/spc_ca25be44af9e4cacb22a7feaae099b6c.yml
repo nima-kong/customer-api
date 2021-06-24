@@ -1,0 +1,95 @@
+_id: spc_ca25be44af9e4cacb22a7feaae099b6c
+type: ApiSpec
+parentId: wrk_91e8f25e3d37414891e6e5f2fe7aacbc
+modified: 1624505940282
+created: 1624505775462
+fileName: customer-opa
+contents: |
+  openapi: "3.0.0"
+  info:
+    version: 1.0.1
+    title: customer api
+    license:
+      name: Kong
+
+  servers:
+    - url: ${UPSTREAM_SERVER_URL}$
+      description: Upstream server URL.
+  # x-kong-plugin-request-size-limiting:
+  #       enabled: true
+  #       config:
+  #         allowed_payload_size: 1
+  #         size_unit: megabytes
+
+  paths:
+    "/customers":
+      get:
+        summary: List all customers
+        operationId: listCustomers
+        tags:
+          - customers
+        x-kong-plugin-mocking:
+          enabled: true
+          config:
+            api_specification_filename: customer.yaml
+
+  #       x-kong-plugin-rate-limiting: 
+  #         enabled: true
+  #         config:        
+  #           minute: 5
+  #           policy: local
+        responses:
+          '200':
+            description: An array of customers                    
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/Customers"
+                example:
+                  response:
+                    value:
+                      - id: 1239
+                        customerName: John Smith
+                      - id: 1240
+                        customerName: Dave Smith   
+          default:
+            description: unexpected error
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/Error"
+
+  components:
+    schemas:
+      Customer:
+        type: object
+        properties:
+          id:
+            type: integer
+            format: int64
+          customerName:
+            type: string          
+        example:
+          id:123
+          customerName:'John Smith'
+      Customers:
+        type: array
+        items:
+          $ref: "#/components/schemas/Customer"
+        example:
+          - id: 1235
+            customerName: John Smith
+          - id: 1236
+            customerName: Dave Smith
+      Error:
+        type: object
+        required:
+          - code
+          - message
+        properties:
+          code:
+            type: integer
+            format: int32
+          message:
+            type: string
+contentType: yaml
