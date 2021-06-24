@@ -1,7 +1,7 @@
 _id: spc_ca25be44af9e4cacb22a7feaae099b6c
 type: ApiSpec
 parentId: wrk_91e8f25e3d37414891e6e5f2fe7aacbc
-modified: 1624511961689
+modified: 1624512043006
 created: 1624505775462
 fileName: customer-opa
 contents: |
@@ -32,7 +32,7 @@ contents: |
         config:
           opa_host: ${OPA_HOST}$
           opa_port: ${OPA_PORT}$
-          opa_path: /v1/data/azuredemo/has_BearerToken
+          opa_path: /v1/data/azuredemo
 
 
   paths:
