@@ -73,6 +73,7 @@ jobs:
           files: '["./.insomnia/ApiSpec/*.yml"]'
         env:
           UPSTREAM_SERVER_URL: '${{ secrets.UPSTREAM_SERVER_URL }}'
+          SUMO_SERVER_URL: '${{ secrets.SUMO_SERVER_URL }}'
           OPA_HOST: '${{ secrets.OPA_HOST }}'
           OPA_PORT: '${{ secrets.OPA_PORT }}'
       
