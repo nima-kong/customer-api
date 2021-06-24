@@ -51,9 +51,7 @@ jobs:
           tokenSuffix: '}$'
           files: '["./.insomnia/ApiSpec/*.yml"]'
         env:
-          UPSTREAM_SERVER_URL: '${{ secrets.KONG_PROXY_ADDR }}' 
-          OPA_HOST: '${{ secrets.OPA_HOST }}'
-          OPA_PORT: '${{ secrets.OPA_PORT }}' 
+          UPSTREAM_SERVER_URL: '${{ secrets.KONG_PROXY_ADDR }}'           
       # We will push to the Kong dev portal
       - name: Deploy to dev portal
         run: |          
@@ -75,11 +73,14 @@ jobs:
           files: '["./.insomnia/ApiSpec/*.yml"]'
         env:
           UPSTREAM_SERVER_URL: '${{ secrets.UPSTREAM_SERVER_URL }}'
+          OPA_HOST: '${{ secrets.OPA_HOST }}'
+          OPA_PORT: '${{ secrets.OPA_PORT }}'
       
       # Generate declarative config
       - name: Generate declarative config
         run: |
-          inso generate config customer-opa --type declarative --output kong.yaml          
+          inso generate config customer-opa --type declarative --output kong.yaml 
+          cat kong.yaml
       # Ping the Kong instance
       # Sync to Kong
       - name: Update Kong
