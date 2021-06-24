@@ -1,7 +1,7 @@
 _id: req_wrk_91e8f25e3d37414891e6e5f2fe7aacbce87af5e3
 type: Request
 parentId: wrk_91e8f25e3d37414891e6e5f2fe7aacbc
-modified: 1624506974693
+modified: 1624509706575
 created: 1624505940260
 url: "{{ base_url }}/customers"
 name: List all customers
@@ -10,8 +10,9 @@ method: GET
 body: {}
 parameters: []
 headers:
-  - name: ""
-    value: ""
+  - name: authorization
+    value: Bearer
+      eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQWxpY2lhIFNtaXRoc29uaWFuIiwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInVzZXJuYW1lIjoiYWxpY2UifQ.md2KPJFH9OgBq-N0RonGdf5doGYRO_1miN8ugTSeTYc
     description: ""
     id: pair_f1ec0193aa37401eb075086c0d5462b6
 authentication: {}
