@@ -18,4 +18,7 @@ allow {
   #input.client_ip == "10.244.0.13"
   #net.cidr_contains("10.0.0.0/10", input.client_ip)
   net.cidr_contains("0.0.0.0/0", input.client_ip)
+
+  role := data.azuredemo.users.alice.role
+  role == "admin"
 }
