@@ -1,7 +1,7 @@
 _id: spc_ca25be44af9e4cacb22a7feaae099b6c
 type: ApiSpec
 parentId: wrk_91e8f25e3d37414891e6e5f2fe7aacbc
-modified: 1624506859319
+modified: 1624508808888
 created: 1624505775462
 fileName: customer-opa
 contents: |
@@ -20,6 +20,14 @@ contents: |
   #       config:
   #         allowed_payload_size: 1
   #         size_unit: megabytes
+
+  x-kong-plugin-opa:
+        enabled: true
+        config:
+          opa_host: ${OPA_HOST}$
+          opa_port: ${OPA_PORT}$
+          opa_path: /v1/data/azuredemo/has_BearerToken
+
 
   paths:
     "/customers":
