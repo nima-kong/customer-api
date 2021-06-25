@@ -1,7 +1,7 @@
 _id: spc_ca25be44af9e4cacb22a7feaae099b6c
 type: ApiSpec
 parentId: wrk_91e8f25e3d37414891e6e5f2fe7aacbc
-modified: 1624578169513
+modified: 1624579491602
 created: 1624505775462
 fileName: customer-opa
 contents: |
@@ -15,18 +15,21 @@ contents: |
   servers:
     - url: ${UPSTREAM_SERVER_URL}$
       description: Upstream server URL.
+
+  # Key Auth plugin enables authentication for this service
+  x-kong-plugin-key-auth:
+    enabled: true
+    config:
+      key_names:
+      - apikey
+
+
   # x-kong-plugin-request-size-limiting:
   #       enabled: true
   #       config:
   #         allowed_payload_size: 1
   #         size_unit: megabytes
 
-  # Key Auth plugin enables authentication for this service
-  # x-kong-plugin-key-auth:
-  #   enabled: true
-  #   config:
-  #     key_names:
-  #     - apikey
 
   # HTTP Log plugin sends logs to Sumo Logic
   # x-kong-plugin-http-log:
