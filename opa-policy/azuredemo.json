@@ -1,0 +1,21 @@
+{
+  "networkcidr": "0.0.0.0/0",
+  "apps": ["insomnia"],
+  "users": {
+      "alice": {
+        "role": "admin"
+      }
+  },
+  "role_service_access": {
+    "admin": {
+      "customer_api": {
+        "access": ["GET"],
+        "tier": "Gold"
+      },
+      "employee_api": {
+        "access": ["GET","POST"],
+        "tier": "Silver"
+      }
+    }
+  }
+}
