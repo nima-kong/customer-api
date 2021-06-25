@@ -1,7 +1,7 @@
 _id: spc_ca25be44af9e4cacb22a7feaae099b6c
 type: ApiSpec
 parentId: wrk_91e8f25e3d37414891e6e5f2fe7aacbc
-modified: 1624601616286
+modified: 1624601788873
 created: 1624505775462
 fileName: customer-opa
 contents: |
@@ -32,10 +32,10 @@ contents: |
 
 
   # HTTP Log plugin sends logs to Sumo Logic
-  # x-kong-plugin-http-log:
-  #   enabled: true
-  #   config:
-  #     http_endpoint: ${SUMO_SERVER_URL}$
+  x-kong-plugin-http-log:
+    enabled: true
+    config:
+      http_endpoint: ${SUMO_SERVER_URL}$
 
 
   # x-kong-plugin-opa:
@@ -47,7 +47,7 @@ contents: |
   #         include_consumer_in_opa_input: true
   #         include_route_in_opa_input: true
   #         include_service_in_opa_input: true
-    ,mn,mn,mn      
+        
   paths:
     "/customers":
       get:
