@@ -1,7 +1,7 @@
 _id: spc_ca25be44af9e4cacb22a7feaae099b6c
 type: ApiSpec
 parentId: wrk_91e8f25e3d37414891e6e5f2fe7aacbc
-modified: 1624589079066
+modified: 1624600606539
 created: 1624505775462
 fileName: customer-opa
 contents: |
@@ -48,7 +48,6 @@ contents: |
   #         include_route_in_opa_input: true
   #         include_service_in_opa_input: true
           
-
   paths:
     "/customers":
       get:
