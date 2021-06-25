@@ -1,7 +1,7 @@
 _id: spc_ca25be44af9e4cacb22a7feaae099b6c
 type: ApiSpec
 parentId: wrk_91e8f25e3d37414891e6e5f2fe7aacbc
-modified: 1624579491602
+modified: 1624579705380
 created: 1624505775462
 fileName: customer-opa
 contents: |
@@ -24,18 +24,18 @@ contents: |
       - apikey
 
 
-  # x-kong-plugin-request-size-limiting:
-  #       enabled: true
-  #       config:
-  #         allowed_payload_size: 1
-  #         size_unit: megabytes
+  x-kong-plugin-request-size-limiting:
+        enabled: true
+        config:
+          allowed_payload_size: 1
+          size_unit: megabytes
 
 
   # HTTP Log plugin sends logs to Sumo Logic
-  # x-kong-plugin-http-log:
-  #   enabled: true
-  #   config:
-  #     http_endpoint: ${SUMO_SERVER_URL}$
+  x-kong-plugin-http-log:
+    enabled: true
+    config:
+      http_endpoint: ${SUMO_SERVER_URL}$
 
 
   # x-kong-plugin-opa:
@@ -56,16 +56,15 @@ contents: |
         operationId: listCustomers
         tags:
           - customers
-        x-kong-plugin-mocking:
-          enabled: true
-          config:
-            api_specification_filename: customer.yaml
-
-  #       x-kong-plugin-rate-limiting: 
+  #       x-kong-plugin-mocking:
   #         enabled: true
-  #         config:        
-  #           minute: 5
-  #           policy: local
+  #         config:
+  #           api_specification_filename: customer.yaml
+        x-kong-plugin-rate-limiting: 
+          enabled: true
+          config:        
+            minute: 5
+            policy: local
         responses:
           '200':
             description: An array of customers                    
