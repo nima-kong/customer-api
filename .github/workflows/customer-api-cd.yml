@@ -67,8 +67,9 @@ jobs:
             echo "::set-output name=result::$result"
             
       - name: Should I continue?
-        if: job.steps.call-opa.outputs.result != 'false'
-        run: exit 1
+        run: echo ${{ steps.call-opa.outputs.result }}
+        #if: job.steps.call-opa.outputs.result != 'false'
+        #run: exit 1
       # API Spec linting
       - name: Validate specification
         run: inso lint spec customer-opa
