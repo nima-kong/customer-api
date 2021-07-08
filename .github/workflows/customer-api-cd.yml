@@ -61,7 +61,7 @@ jobs:
       - name: OPA Check Deployment Authorisation
         run: |
           cat  ./v1-data-input.json
-          curl  ${{ env.OPA_HOST }}/v1/data/kongcd -d @./v1-data-input.json -H 'Content-Type: application/json'
+          curl ${{ secrets.OPA_HOST }}/v1/data/kongcd -d @./v1-data-input.json -H 'Content-Type: application/json'
       # API Spec linting
       - name: Validate specification
         run: inso lint spec customer-opa
