@@ -4,6 +4,7 @@ default allow = false
 
 
 allow {
-  input.info.version == "1.0.1"
+  input["x-kong-plugin-key-auth"].enabled == true
+  input["x-kong-plugin-opa"].enabled == true
 
 }
