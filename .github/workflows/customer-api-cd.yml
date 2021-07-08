@@ -62,14 +62,14 @@ jobs:
         id: call-opa
         run: |          
             result=$(curl ${{ secrets.OPA_HOST }}/v1/data/kongcd -d @./v1-data-input.json \
-            -H 'Content-Type: application/json' | jq '.result.allow')          
-            echo "$result"
+            -H 'Content-Type: application/json' | jq '.result.allow')                      
             echo "::set-output name=result::$result"
             
       - name: Should I continue?
-        run: echo ${{ steps.call-opa.outputs.result }}
-        #if: job.steps.call-opa.outputs.result != 'false'
-        #run: exit 1
+        if: steps.call-opa.outputs.result == false
+        run: |
+          echo "Call OPA Result: ${{ steps.call-opa.outputs.result }}"
+          exit 1
       # API Spec linting
       - name: Validate specification
         run: inso lint spec customer-opa
