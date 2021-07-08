@@ -68,11 +68,11 @@ jobs:
       - name: Should I continue?
         #if: steps.call-opa.outputs.result == false
         run: |
-          if ${{ steps.call-opa.outputs.result }} = false; then
-            echo "If Call OPA Result: ${{ steps.call-opa.outputs.result }}"
-            exit 1
+          if ${{ steps.call-opa.outputs.result }}; then
+            echo "If Call OPA Result: ${{ steps.call-opa.outputs.result }}"            
           else
               echo "Else Call OPA Result: ${{ steps.call-opa.outputs.result }}"
+              exit 1
           fi
           
       # API Spec linting
