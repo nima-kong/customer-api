@@ -58,10 +58,14 @@ jobs:
            }
            EOF
       # Check deployment authorisation
-      - name: OPA Check Deployment Authorisation
-        run: |
-          cat  ./v1-data-input.json
-          curl ${{ secrets.OPA_HOST }}/v1/data/kongcd -d @./v1-data-input.json -H 'Content-Type: application/json'
+      - name: Call OPA to Check Deployment Authorisation
+        id: call-opa
+        run: |          
+          curl ${{ secrets.OPA_HOST }}/v1/data/kongcd -d @./opa/v1-data-input.json \
+            -H 'Content-Type: application/json' | jq '.result.allow'          
+      - name: Should continue?
+        if: job.steps.call-opa.output == "false"
+        run: exit 1
       # API Spec linting
       - name: Validate specification
         run: inso lint spec customer-opa
