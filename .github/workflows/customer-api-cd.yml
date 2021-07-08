@@ -61,9 +61,9 @@ jobs:
       - name: Call OPA to Check Deployment Authorisation
         id: call-opa
         run: |          
-            echo '::set-output name=result::$(
-            curl ${{ secrets.OPA_HOST }}/v1/data/kongcd -d @./opa/v1-data-input.json \
-            -H 'Content-Type: application/json' | jq '.result.allow')'          
+            result=$(curl ${{ secrets.OPA_HOST }}/v1/data/kongcd -d @./opa/v1-data-input.json \
+            -H 'Content-Type: application/json' | jq '.result.allow')          
+            echo "$result"
       - name: Should continue?
         if: job.steps.call-opa.output == 'false'
         run: exit 1
