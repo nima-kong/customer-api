@@ -52,7 +52,7 @@ jobs:
         run: echo "${{ steps.yaml2json.outputs.data }}"
       - name: Prepare OPA input
         run: |
-           cat <<EOF > ./opa/v1-data-input.json
+           cat <<EOF > ./v1-data-input.json
            {
                 "input": ${{ steps.yaml2json.outputs.data }}
            }
