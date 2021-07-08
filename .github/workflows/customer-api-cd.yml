@@ -54,7 +54,7 @@ jobs:
         run: |
            cat <<EOF > ./opa/v1-data-input.json
            {
-                "input": $(${{ steps.yaml2json.outputs.data }})
+                "input": ${{ steps.yaml2json.outputs.data }}
            }
            EOF
       # Check deployment authorisation
