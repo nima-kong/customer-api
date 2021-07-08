@@ -39,6 +39,29 @@ jobs:
           sudo cp /tmp/deck /usr/local/bin/ 
       - name: Install inso
         run: npm install -g insomnia-inso kong-portal-cli
+      # Export customer yaml
+      - name: Export customer yaml
+        run: inso export spec customer-opa --output customer.yaml
+      - uses: fabasoad/yaml-json-xml-converter-action@main
+        id: yaml2json
+        with:
+          path: 'customer.yaml'
+          from: 'yaml'
+          to: 'json'
+      - name: Print yaml2json result
+        run: echo "${{ steps.yaml2json.outputs.data }}"
+      - name: Prepare OPA input
+        run: |
+           cat <<EOF > ./opa/v1-data-input.json
+           {
+                "input": $(cat ${{ steps.yaml2json.outputs.data }})
+           }
+           EOF
+      # Check deployment authorisation
+      - name: OPA Check Deployment Authorisation
+        run: |
+          cat  ./v1-data-input.json
+          curl  ${{ env.OPA_HOST }}/v1/data/kongcd -d @./v1-data-input.json -H 'Content-Type: application/json'
       # API Spec linting
       - name: Validate specification
         run: inso lint spec customer-opa
