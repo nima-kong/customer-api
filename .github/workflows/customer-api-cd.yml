@@ -68,7 +68,7 @@ jobs:
       - name: Should I continue?
         #if: steps.call-opa.outputs.result == false
         run: |
-          if ${{ steps.call-opa.outputs.result }} == 'false'; then
+          if ${{ steps.call-opa.outputs.result }} == false; then
             echo "If Call OPA Result: ${{ steps.call-opa.outputs.result }}"
             exit 1
           else
