@@ -68,8 +68,13 @@ jobs:
       - name: Should I continue?
         #if: steps.call-opa.outputs.result == false
         run: |
-          echo "Call OPA Result: ${{ steps.call-opa.outputs.result }}"
-          exit 1
+          if ${{ steps.call-opa.outputs.result }} == 'false'; then
+            echo "If Call OPA Result: ${{ steps.call-opa.outputs.result }}"
+            exit 1
+          else
+              echo "Else Call OPA Result: ${{ steps.call-opa.outputs.result }}"
+          fi
+          
       # API Spec linting
       - name: Validate specification
         run: inso lint spec customer-opa
