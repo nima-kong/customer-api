@@ -61,7 +61,7 @@ jobs:
       - name: Call OPA to Check Deployment Authorisation
         id: call-opa
         run: |          
-            result=$(curl ${{ secrets.OPA_HOST }}/v1/data/kongcd -d @./v1-data-input.json \
+            result=$(curl ${{ secrets.OPA_HOST }}/v1/data/apiCDAuthz -d @./v1-data-input.json \
             -H 'Content-Type: application/json' | jq '.result.allow')                      
             echo "::set-output name=result::$result"
             
