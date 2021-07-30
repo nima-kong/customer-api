@@ -1,9 +1,9 @@
 package userAuthz
 
-default allow = false
+default allowUser = false
 
 
-allow {
+allowUser = response {
   # Validate JWT token
   v := input.request.http.headers.authorization
   startswith(v, "Bearer ")
@@ -21,10 +21,17 @@ allow {
 
 
   # Validate user's access to api
-	role := data.userAuthz.users[payload.username].role
+  role := data.userAuthz.users[payload.username].role
   serviceName := input.service.name
   access := data.userAuthz.role_service_access[role][serviceName].access
+  tier := data.userAuthz.role_service_access[role][serviceName].tier
   some i
   access[i] == input.request.http.method
 
+  response := {
+    "allow": true,
+    "headers": {
+      "x-user-tier": tier,
+    },
+  }
 }
