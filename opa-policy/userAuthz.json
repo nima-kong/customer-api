@@ -1,8 +1,9 @@
 {
+  "jwt_signiture": "46546B41BD5F462719C6D6118E673A2389",
   "networkcidr": "0.0.0.0/0",
   "apps": ["insomnia"],
   "users": {
-      "alice": {
+      "john.smith@myco.com": {
         "role": "admin"
       }
   },
