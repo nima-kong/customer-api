@@ -1,4 +1,4 @@
-package kongcd
+package apiCDAuthz
 
 default allow = false
 
