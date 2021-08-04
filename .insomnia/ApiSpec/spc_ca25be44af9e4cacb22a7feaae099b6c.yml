@@ -1,14 +1,14 @@
 _id: spc_ca25be44af9e4cacb22a7feaae099b6c
 type: ApiSpec
 parentId: wrk_91e8f25e3d37414891e6e5f2fe7aacbc
-modified: 1627621165925
+modified: 1628046288478
 created: 1624505775462
 fileName: customer-opa
 contents: |
   openapi: "3.0.0"
   info:
     version: 1.0.1
-    title: customer api
+    title: customer
     license:
       name: Kong
 
@@ -23,15 +23,15 @@ contents: |
       key_names:
       - apikey
 
-  x-kong-plugin-opa:
-        enabled: true
-        config:
-          opa_host: ${OPA_HOST}$
-          opa_port: ${OPA_PORT}$
-          opa_path: /v1/data/userAuthz/allowUser
-          include_consumer_in_opa_input: true
-          include_route_in_opa_input: true
-          include_service_in_opa_input: true
+  # x-kong-plugin-opa:
+  #       enabled: true
+  #       config:
+  #         opa_host: ${OPA_HOST}$
+  #         opa_port: ${OPA_PORT}$
+  #         opa_path: /v1/data/userAuthz/allowUser
+  #         include_consumer_in_opa_input: true
+  #         include_route_in_opa_input: true
+  #         include_service_in_opa_input: true
 
   # x-kong-plugin-request-size-limiting:
   #       enabled: true
@@ -41,10 +41,10 @@ contents: |
 
 
   # HTTP Log plugin sends logs to Sumo Logic
-  x-kong-plugin-http-log:
-    enabled: true
-    config:
-      http_endpoint: ${SUMO_SERVER_URL}$
+  # x-kong-plugin-http-log:
+  #   enabled: true
+  #   config:
+  #     http_endpoint: ${SUMO_SERVER_URL}$
      
   paths:
     "/customers":
