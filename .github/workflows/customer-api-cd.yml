@@ -39,7 +39,7 @@ jobs:
           sudo cp /tmp/deck /usr/local/bin/ 
       - name: Install inso
         run: npm install -g insomnia-inso kong-portal-cli
-      # Export customer yaml
+      # Export customer yaml to send to OPA Server
       - name: Export customer yaml
         run: inso export spec customer-opa --output customer.yaml
       - uses: fabasoad/yaml-json-xml-converter-action@main
@@ -67,12 +67,12 @@ jobs:
             
       - name: Should I continue?
         #if: steps.call-opa.outputs.result == false
+        #exit 1
         run: |
           if ${{ steps.call-opa.outputs.result }}; then
             echo "If Call OPA Result: ${{ steps.call-opa.outputs.result }}"            
           else
-              echo "Else Call OPA Result: ${{ steps.call-opa.outputs.result }}"
-              exit 1
+              echo "Else Call OPA Result: ${{ steps.call-opa.outputs.result }}"              
           fi
           
       # API Spec linting
