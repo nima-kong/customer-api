@@ -121,8 +121,8 @@ jobs:
           cat kong.yaml
 #       - name: Deploy OPA Policy
 #         run: |          
-#           curl -XPUT ${{ env.OPA_HOST }}/v1/policies/azuredemo --data-binary @./opa-policy/userAuthz.rego
-#           curl -XPUT ${{ env.OPA_HOST }}/v1/data/azuredemo --data-binary @./opa-policy/userAuthz.json
+#           curl -XPUT ${{ env.OPA_HOST }}/v1/policies/userAuthz --data-binary @./opa-policy/userAuthz.rego
+#           curl -XPUT ${{ env.OPA_HOST }}/v1/data/userAuthz --data-binary @./opa-policy/userAuthz.json
 #         env:          
 #           OPA_HOST: '${{ secrets.OPA_HOST }}'
 #           OPA_PORT: '${{ secrets.OPA_PORT }}'
