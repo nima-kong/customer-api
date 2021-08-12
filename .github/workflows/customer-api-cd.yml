@@ -41,7 +41,7 @@ jobs:
         run: npm install -g insomnia-inso kong-portal-cli@3.1.0 
       # Export customer yaml to send to OPA Server
 #       - name: Export customer yaml
-#         run: inso export spec customer-opa --output customer.yaml
+#         run: inso export spec customer-api --output customer.yaml
 #       - uses: fabasoad/yaml-json-xml-converter-action@main
 #         id: yaml2json
 #         with:
@@ -78,7 +78,7 @@ jobs:
           
       # API Spec linting
       - name: Validate specification
-        run: inso lint spec customer-opa
+        run: inso lint spec customer-api
       
       # Deploy Customer OAS spec to the Dev Portal
       - name: Prepare URL 4 Portal
@@ -92,7 +92,7 @@ jobs:
       # We will push to the Kong dev portal
       - name: Deploy to dev portal
         run: |          
-          inso export spec customer-opa --output workspaces/customer/specs/customer.yaml
+          inso export spec customer-api --output workspaces/customer/specs/customer.yaml
           cp workspaces/customer/cli.conf.yaml.example workspaces/customer/cli.conf.yaml
           portal deploy --preserve customer
         env:
@@ -117,7 +117,7 @@ jobs:
       # Generate declarative config
       - name: Generate declarative config
         run: |
-          inso generate config customer-opa --type declarative --output kong.yaml 
+          inso generate config customer-api --type declarative --output kong.yaml 
           cat kong.yaml
 #       - name: Deploy OPA Policy
 #         run: |          
@@ -133,6 +133,6 @@ jobs:
             
       # Run tests
       - name: Run test suites
-        run: inso run test customer-opa -e ${{ env.TARGET_ENVIRONMENT }}
+        run: inso run test customer-api -e ${{ env.TARGET_ENVIRONMENT }}
         env:
           TARGET_ENVIRONMENT: Azure
