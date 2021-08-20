@@ -39,42 +39,7 @@ jobs:
           sudo cp /tmp/deck /usr/local/bin/ 
       - name: Install inso
         run: npm install -g insomnia-inso kong-portal-cli@3.1.0 
-      # Export customer yaml to send to OPA Server
-#       - name: Export customer yaml
-#         run: inso export spec customer-api --output customer.yaml
-#       - uses: fabasoad/yaml-json-xml-converter-action@main
-#         id: yaml2json
-#         with:
-#           path: 'customer.yaml'
-#           from: 'yaml'
-#           to: 'json'
-#       - name: Print yaml2json result
-#         run: echo "${{ steps.yaml2json.outputs.data }}"
-#       - name: Prepare OPA input
-#         run: |
-#            cat <<EOF > ./v1-data-input.json
-#            {
-#                 "input": ${{ steps.yaml2json.outputs.data }}
-#            }
-#            EOF
-      # Check deployment authorisation
-#       - name: Call OPA to Check Deployment Authorisation
-#         id: call-opa
-#         run: |          
-#             result=$(curl ${{ secrets.OPA_HOST }}/v1/data/apiCDAuthz -d @./v1-data-input.json \
-#             -H 'Content-Type: application/json' | jq '.result.allow')                      
-#             echo "::set-output name=result::$result"
-            
-#       - name: Should I continue?
-#         #if: steps.call-opa.outputs.result == false
-#         #exit 1
-#         run: |
-#           if ${{ steps.call-opa.outputs.result }}; then
-#             echo "If Call OPA Result: ${{ steps.call-opa.outputs.result }}"            
-#           else
-#               echo "Else Call OPA Result: ${{ steps.call-opa.outputs.result }}"
-#               exit 1
-#           fi
+     
           
       # API Spec linting
       - name: Validate specification
@@ -119,13 +84,7 @@ jobs:
         run: |
           inso generate config customer-api --type declarative --output kong.yaml 
           cat kong.yaml
-#       - name: Deploy OPA Policy
-#         run: |          
-#           curl -XPUT ${{ env.OPA_HOST }}/v1/policies/userAuthz --data-binary @./opa-policy/userAuthz.rego
-#           curl -XPUT ${{ env.OPA_HOST }}/v1/data/userAuthz --data-binary @./opa-policy/userAuthz.json
-#         env:          
-#           OPA_HOST: '${{ secrets.OPA_HOST }}'
-#           OPA_PORT: '${{ secrets.OPA_PORT }}'
+
       # Ping the Kong instance
       # Sync to Kong
       - name: Update Kong
