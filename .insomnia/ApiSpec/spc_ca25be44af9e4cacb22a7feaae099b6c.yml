@@ -1,7 +1,7 @@
 _id: spc_ca25be44af9e4cacb22a7feaae099b6c
 type: ApiSpec
 parentId: wrk_91e8f25e3d37414891e6e5f2fe7aacbc
-modified: 1631577975620
+modified: 1631578537270
 created: 1624505775462
 fileName: customer-api
 contents: |
@@ -73,11 +73,13 @@ contents: |
               application/json:
                 schema:
                   $ref: "#/components/schemas/Customers"
-                example:
-                  - id: 4789
-                    customerName: Robert DeNiro
-                  - id: 36987
-                    customerName: Al Pacino   
+                examples:
+                   response:
+                    value:
+                      - id: 4789
+                        customerName: Robert DeNiro
+                      - id: 36987
+                        customerName: Al Pacino   
           default:
             description: unexpected error
             content:
