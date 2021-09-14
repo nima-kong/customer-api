@@ -1,7 +1,7 @@
 _id: spc_ca25be44af9e4cacb22a7feaae099b6c
 type: ApiSpec
 parentId: wrk_91e8f25e3d37414891e6e5f2fe7aacbc
-modified: 1629423245939
+modified: 1631577975620
 created: 1624505775462
 fileName: customer-api
 contents: |
@@ -74,12 +74,10 @@ contents: |
                 schema:
                   $ref: "#/components/schemas/Customers"
                 example:
-                  response:
-                    value:
-                      - id: 4789
-                        customerName: Robert DeNiro
-                      - id: 36987
-                        customerName: Al Pacino   
+                  - id: 4789
+                    customerName: Robert DeNiro
+                  - id: 36987
+                    customerName: Al Pacino   
           default:
             description: unexpected error
             content:
@@ -96,19 +94,11 @@ contents: |
             type: integer
             format: int64
           customerName:
-            type: string          
-        example:
-          id:123
-          customerName:'John Smith'
+            type: string     
       Customers:
         type: array
         items:
           $ref: "#/components/schemas/Customer"
-        example:
-          - id: 1235
-            customerName: John Smith
-          - id: 1236
-            customerName: Dave Smith
       Error:
         type: object
         required:
