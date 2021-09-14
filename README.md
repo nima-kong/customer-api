@@ -36,8 +36,8 @@ expect(response1.status).to.equal(200);
 ```
 We will run this test case as part of our Git Actions workflow to make sure, api deployment was successful.
 
-## Actions
-I have created a simple Git Action workflow to build and deploy Kong Services, routes and plugins. This workflow starts with checking out the the code, creating a backup from customer api specification and installing nodejs, deck, inso CLI and dev portal CLI.  
+## GitHub Actions
+I have created a simple workflow to build and deploy Kong Services, routes and plugins. This workflow starts with checking out the the code, creating a backup from customer api specification and installing nodejs, deck, inso CLI and dev portal CLI.  
 The ```Validate Specification``` job uses inso CLI to do automated linting. If these is a problem with the api specification, it will stop the build process.  
 
 ```Prepare URL 4 Portal``` job replaces the  ```url``` with the Kong gateway address. This is because when we publish the api specification to the Dev Portal, it should call the service hosted in Kong not the backend api.  
