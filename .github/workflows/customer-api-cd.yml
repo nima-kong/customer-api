@@ -38,7 +38,7 @@ jobs:
           tar -xf deck.tar.gz -C /tmp
           sudo cp /tmp/deck /usr/local/bin/ 
       - name: Install inso
-        run: npm install -g insomnia-inso kong-portal-cli@3.1.0 
+        run: npm install -g insomnia-inso kong-portal-cli 
      
           
       # API Spec linting
@@ -82,7 +82,7 @@ jobs:
       # Generate declarative config
       - name: Generate declarative config
         run: |
-          inso generate config customer-api --type declarative --output kong.yaml 
+          inso generate config customer-api --tags customer-api --type declarative --output kong.yaml 
           cat kong.yaml
 
       # Ping the Kong instance
