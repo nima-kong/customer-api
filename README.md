@@ -1,5 +1,5 @@
 # APIOps demo
-This repository contains customer-api project created with Insomnia and a Git Action workflow to build and deploy Kong services, routs and plugins.
+This repository contains customer-api project created with Insomnia and a workflow to build and deploy Kong services, routs and plugins.
 ## Customer API
 You can use insomnia to directly import this project from git repository. After importing the project, You can find the API specification in the Design tab. This is a simple api which returns a list of customers. It also has some ``` x-kong- ``` tags. These metadata will be used by inso CLI to generate the Kong plugins. In this case we used the following metadata to create Mocking plugin.
 ```
@@ -36,7 +36,7 @@ expect(response1.status).to.equal(200);
 ```
 We will run this test case as part of our Git Actions workflow to make sure, api deployment was successful.
 
-## Git Actions
+## Actions
 I have created a simple Git Action workflow to build and deploy Kong Services, routes and plugins. This workflow starts with checking out the the code, creating a backup from customer api specification and installing nodejs, deck, inso CLI and dev portal CLI.  
 The ```Validate Specification``` job uses inso CLI to do automated linting. If these is a problem with the api specification, it will stop the build process.  
 
