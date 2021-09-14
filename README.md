@@ -1,4 +1,4 @@
-# Customer Api
+# APIOps demo
 This repository contains customer-api project created with Insomnia and a Git Action workflow to build and deploy Kong services, routs and plugins.
 ## Customer API
 You can use insomnia to directly import this project from git repository. After importing the project, You can find the API specification in the Design tab. This is a simple api which returns a list of customers. It also has some ``` x-kong- ``` tags. These metadata will be used by inso CLI to generate the Kong plugins. In this case we used the following metadata to create Mocking plugin.
