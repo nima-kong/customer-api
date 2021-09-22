@@ -1,9 +1,9 @@
 _id: req_wrk_91e8f25e3d37414891e6e5f2fe7aacbce87af5e3
 type: Request
 parentId: wrk_91e8f25e3d37414891e6e5f2fe7aacbc
-modified: 1627622516932
+modified: 1632293979790
 created: 1624505940260
-url: "{{ base_url }}/customers"
+url: "{{ base_url }}/v1/customers"
 name: List all customers
 description: ""
 method: GET
