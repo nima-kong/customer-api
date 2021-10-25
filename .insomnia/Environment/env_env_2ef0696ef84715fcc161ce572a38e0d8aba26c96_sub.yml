@@ -1,14 +1,14 @@
 _id: env_env_2ef0696ef84715fcc161ce572a38e0d8aba26c96_sub
 type: Environment
 parentId: env_2ef0696ef84715fcc161ce572a38e0d8aba26c96
-modified: 1624507044434
+modified: 1635123448798
 created: 1624505940276
 name: Azure
 data:
   scheme:
     - http
   base_path: ""
-  host: kong-proxy.23c9f5ecaad14c5ebbba.australiaeast.aksapp.io
+  host: kong-proxy.bc0e9fc070fa481e95ab.australiaeast.aksapp.io
 dataPropertyOrder:
   "&":
     - scheme
