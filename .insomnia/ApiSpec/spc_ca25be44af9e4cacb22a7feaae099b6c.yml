@@ -1,7 +1,7 @@
 _id: spc_ca25be44af9e4cacb22a7feaae099b6c
 type: ApiSpec
 parentId: wrk_91e8f25e3d37414891e6e5f2fe7aacbc
-modified: 1637799672705
+modified: 1637799991234
 created: 1624505775462
 fileName: customer-api
 contents: |
@@ -18,11 +18,11 @@ contents: |
 
 
   # Key Auth plugin enables authentication for this service
-  # x-kong-plugin-key-auth:
-  #   enabled: true
-  #   config:
-  #     key_names:
-  #     - apikey
+  x-kong-plugin-key-auth:
+    enabled: true
+    config:
+      key_names:
+      - apikey
 
   # x-kong-plugin-opa:
   #       enabled: true
@@ -55,10 +55,10 @@ contents: |
         operationId: listCustomers
         tags:
           - customers
-  #       x-kong-plugin-mocking:
-  #         enabled: true
-  #         config:
-  #           api_specification_filename: customer.yaml
+        x-kong-plugin-mocking:
+          enabled: true
+          config:
+            api_specification_filename: customer.yaml
 
   #       x-kong-plugin-rate-limiting: 
   #         enabled: true
