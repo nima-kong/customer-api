@@ -1,7 +1,7 @@
 _id: spc_ca25be44af9e4cacb22a7feaae099b6c
 type: ApiSpec
 parentId: wrk_91e8f25e3d37414891e6e5f2fe7aacbc
-modified: 1637808954225
+modified: 1637811423001
 created: 1624505775462
 fileName: customer-api
 contents: |
@@ -80,24 +80,24 @@ contents: |
               port: 6379
               ssl: false
                           
-        x-kong-plugin-proxy-cache-advanced: 
-          enabled: true
-          config:        
-            response_code:
-            - 200
-            request_method: 
-            - GET
-            - HEAD
-            content_type:
-            - text/plain
-            - application/json
-            cache_control: false
-            cache_ttl: 20
-            strategy: redis           
-            redis:
-              host: nima-redis.redis.cache.windows.net
-              port: 6379
-              ssl: false
+  #       x-kong-plugin-proxy-cache-advanced: 
+  #         enabled: true
+  #         config:        
+  #           response_code:
+  #           - 200
+  #           request_method: 
+  #           - GET
+  #           - HEAD
+  #           content_type:
+  #           - text/plain
+  #           - application/json
+  #           cache_control: false
+  #           cache_ttl: 20
+  #           strategy: redis           
+  #           redis:
+  #             host: nima-redis.redis.cache.windows.net
+  #             port: 6379
+  #             ssl: false
             
   #       x-kong-plugin-rate-limiting: 
   #         enabled: true
