@@ -1,7 +1,7 @@
 _id: spc_ca25be44af9e4cacb22a7feaae099b6c
 type: ApiSpec
 parentId: wrk_91e8f25e3d37414891e6e5f2fe7aacbc
-modified: 1637811423001
+modified: 1637811523858
 created: 1624505775462
 fileName: customer-api
 contents: |
@@ -18,11 +18,11 @@ contents: |
 
 
   # Key Auth plugin enables authentication for this service
-  x-kong-plugin-key-auth:
-    enabled: true
-    config:
-      key_names:
-      - apikey
+  # x-kong-plugin-key-auth:
+  #   enabled: true
+  #   config:
+  #     key_names:
+  #     - apikey
 
   # x-kong-plugin-opa:
   #       enabled: true
@@ -43,10 +43,10 @@ contents: |
 
 
   # HTTP Log plugin sends logs to Sumo Logic
-  x-kong-plugin-http-log:
-    enabled: true
-    config:
-      http_endpoint: ${SUMO_SERVER_URL}$
+  # x-kong-plugin-http-log:
+  #   enabled: true
+  #   config:
+  #     http_endpoint: ${SUMO_SERVER_URL}$
 
   paths:
     "/v1/customers":
@@ -55,30 +55,30 @@ contents: |
         operationId: listCustomers
         tags:
           - customers
-        x-kong-plugin-mocking:
-          enabled: true
-          config:
-            api_specification_filename: customer.yaml
+  #       x-kong-plugin-mocking:
+  #         enabled: true
+  #         config:
+  #           api_specification_filename: customer.yaml
         
-        x-kong-plugin-rate-limiting-advanced: 
-          enabled: true
-          config:        
-            limit:
-            - 5
-            window_size: 
-            - 30
-            identifier: consumer
-            dictionary_name: kong_rate_limiting_counters
-            sync_rate: -1
-            namespace: random_auto_generated_string
-            strategy: redis
-            hide_client_headers: false
-            window_type: sliding
-            retry_after_jitter_max: 0
-            redis:
-              host: nima-redis.redis.cache.windows.net
-              port: 6379
-              ssl: false
+  #       x-kong-plugin-rate-limiting-advanced: 
+  #         enabled: true
+  #         config:        
+  #           limit:
+  #           - 5
+  #           window_size: 
+  #           - 30
+  #           identifier: consumer
+  #           dictionary_name: kong_rate_limiting_counters
+  #           sync_rate: -1
+  #           namespace: random_auto_generated_string
+  #           strategy: redis
+  #           hide_client_headers: false
+  #           window_type: sliding
+  #           retry_after_jitter_max: 0
+  #           redis:
+  #             host: nima-redis.redis.cache.windows.net
+  #             port: 6379
+  #             ssl: false
                           
   #       x-kong-plugin-proxy-cache-advanced: 
   #         enabled: true
