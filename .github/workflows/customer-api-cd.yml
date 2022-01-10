@@ -31,7 +31,9 @@ jobs:
           ls ./spec-backup            
       #Installing the inso, deck and portal cli
       - name: Install NodeJS
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
+        with:
+          node-version: '12'
       - name: Install Deck  
         run: |
           curl -sL https://github.com/kong/deck/releases/download/v1.6.0/deck_1.6.0_linux_amd64.tar.gz -o deck.tar.gz
