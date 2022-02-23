@@ -1,7 +1,7 @@
 _id: req_wrk_91e8f25e3d37414891e6e5f2fe7aacbce87af5e3
 type: Request
 parentId: wrk_91e8f25e3d37414891e6e5f2fe7aacbc
-modified: 1632889870174
+modified: 1645579280728
 created: 1624505940260
 url: "{{ base_url }}/v1/customers"
 name: List all customers
@@ -15,10 +15,12 @@ headers:
       eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9obiBTbWl0aCIsInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJ1c2VybmFtZSI6ImpvaG4uc21pdGhAbXljby5jb20ifQ.Y4Osz4_9z0T4ZUwxzkAS_osm8WBt0pqAlaWBo82Bjnc
     description: ""
     id: pair_f1ec0193aa37401eb075086c0d5462b6
+    disabled: true
   - name: apikey
     value: 58hh165c070a41d5c1b58d9d3d744pa3
     description: ""
     id: pair_0f473dba234e467f89f37c955a6cc718
+    disabled: true
 authentication: {}
 metaSortKey: -1624505940260
 isPrivate: false
