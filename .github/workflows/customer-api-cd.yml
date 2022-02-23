@@ -61,7 +61,7 @@ jobs:
         run: |          
           inso export spec customer-api --output workspaces/customer/specs/customer.yaml
           cp workspaces/customer/cli.conf.yaml.example workspaces/customer/cli.conf.yaml
-          portal deploy --preserve customer
+          portal deploy --disable-ssl-verification --preserve customer
         env:
           KONG_ADMIN_URL: ${{ secrets.KONG_ADDR }}
           KONG_ADMIN_TOKEN: ${{ secrets.KONG_ADMIN_TOKEN }}
